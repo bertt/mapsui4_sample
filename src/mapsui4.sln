@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mapsui4", "mapsui4.csproj", "{B77A2E1C-879B-4153-A1A3-3329EF486DE6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B77A2E1C-879B-4153-A1A3-3329EF486DE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B77A2E1C-879B-4153-A1A3-3329EF486DE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B77A2E1C-879B-4153-A1A3-3329EF486DE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B77A2E1C-879B-4153-A1A3-3329EF486DE6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C8131363-BAA0-493F-8E35-A7C81FB2DDCF}
+	EndGlobalSection
+EndGlobal
