@@ -10,5 +10,6 @@ Sample of Mapsui 4, with
 
 Result: 
 
+![image](https://user-images.githubusercontent.com/538812/155399068-4352ea72-26f6-4220-a67b-d58f49400ef7.png)
 
-![image](https://user-images.githubusercontent.com/538812/155213830-9ab68bb3-790c-4249-9e3a-1d3ebec8f356.png)
+
