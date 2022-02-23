@@ -2,34 +2,31 @@
 using Mapsui;
 using Mapsui.Layers;
 using Mapsui.Nts;
-using Mapsui.Nts.Extensions;
-using Mapsui.Projections;
 using Mapsui.Providers;
 using Mapsui.Styles;
 using Mapsui.Tiling;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using System.Windows;
 
 namespace mapsui4
 {
     public partial class MainWindow : Window
     {
-        private string db = @"countries.sqlite";
+        private string db = @"ukraine.sqlite";
         public MainWindow()
         {
             InitializeComponent();
             MapControl.Map.Layers.Add(OpenStreetMap.CreateTileLayer());
 
             SqlMapper.AddTypeHandler(new GeometryTypeHandler());
-            string sql = "SELECT name, ST_ASBinary(GEOMETRY) as geometry FROM countries";
+            string sql = "SELECT name, st_asbinary(ST_Transform(geometry,3857)) as geometry from ukraine";
 
             string connectString = "Data Source=" + db;
             var connection = new SqliteConnection(connectString);
             connection.Open();
-            // connection.EnableExtensions(true);
+            connection.EnableExtensions(true);
 
             SpatialLoader(connection);
             var countries = connection.Query<Country>(sql);
@@ -60,8 +57,7 @@ namespace mapsui4
             {
                 if (country.Geometry != null)
                 {
-                     var p = (NetTopologySuite.Geometries.Point)country.Geometry;
-                     res.Add(new GeometryFeature { Geometry = SphericalMercator.FromLonLat(p.ToMPoint()).ToPoint() });
+                     res.Add(new GeometryFeature { Geometry = country.Geometry });
                 }
             }
             return res;
