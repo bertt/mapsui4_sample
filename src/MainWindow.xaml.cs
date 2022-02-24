@@ -22,35 +22,28 @@ namespace mapsui4
 
             SqlMapper.AddTypeHandler(new GeometryTypeHandler());
             string sql = "SELECT name, st_asbinary(ST_Transform(geometry,3857)) as geometry from ukraine";
-
             string connectString = "Data Source=" + db;
             var connection = new SqliteConnection(connectString);
             connection.Open();
-            connection.EnableExtensions(true);
+            SpatialiteLoader.Load(connection);
 
-            SpatialLoader(connection);
-            var countries = connection.Query<Country>(sql);
+            var countries = connection.Query<District>(sql);
             connection.Close();
             MapControl.Map.Layers.Add(CreatePointLayer(countries));
         }
 
-        private void SpatialLoader(SqliteConnection connection)
-        {
-            SpatialiteLoader.Load(connection);
-        }
-
-        private static MemoryLayer CreatePointLayer(IEnumerable<Country> countries)
+        private static MemoryLayer CreatePointLayer(IEnumerable<District> countries)
         {
             return new MemoryLayer
             {
                 Name = "Points",
                 IsMapInfoLayer = true,
-                DataSource = new MemoryProvider<IFeature>(GetCities2(countries)),
+                DataSource = new MemoryProvider<IFeature>(GetDistricts(countries)),
                 Style = CreatePointStyle()
             };
         }
 
-        private static IEnumerable<IFeature> GetCities2(IEnumerable<Country> countries)
+        private static IEnumerable<IFeature> GetDistricts(IEnumerable<District> countries)
         {
             var res = new List<IFeature>();
             foreach(var country in countries)
@@ -63,14 +56,13 @@ namespace mapsui4
             return res;
         }
 
-        private static readonly Color PointLayerColor = new Color(240, 240, 240, 240);
-
         private static IStyle CreatePointStyle()
         {
+            var pointLayerColor = new Color(240, 240, 240, 240);
             return new VectorStyle
             {
-                Fill = new Brush(PointLayerColor),
-                Line = new Pen(PointLayerColor, 3),
+                Fill = new Brush(pointLayerColor),
+                Line = new Pen(pointLayerColor, 3),
                 Outline = new Pen(Color.Gray, 2)
             };
         }

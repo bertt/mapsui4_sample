@@ -9,9 +9,6 @@ namespace mapsui4
     {
         public override Geometry Parse(object value)
         {
-            if (value == null)
-                return null;
-
             var stream = (byte[])value;
             var g = new WKBReader().Read(stream);
             return g;

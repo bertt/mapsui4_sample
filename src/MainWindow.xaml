@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         xmlns:wpf1="clr-namespace:Mapsui.UI.Wpf;assembly=Mapsui.UI.Wpf"
-        Title="MainWindow1" Height="450" Width="800">
+        Title="MainWindow1" Height="800" Width="1600">
     <Grid>
         <wpf1:MapControl x:Name="MapControl" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
     </Grid>

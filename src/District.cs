@@ -2,7 +2,7 @@
 
 namespace mapsui4
 {
-    public class Country
+    public class District
     {
         public string Name { get; set; }
         public Geometry Geometry { get; set; }
