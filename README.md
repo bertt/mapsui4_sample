@@ -2,7 +2,7 @@
 
 Sample of Mapsui 4, with
 
-- SpatiaLite database (see countries.sqlite)
+- SpatiaLite database (see ukraine.sqlite)
 
 - Dapper
 
